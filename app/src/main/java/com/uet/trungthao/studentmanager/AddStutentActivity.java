@@ -38,22 +38,30 @@ public class AddStutentActivity extends AppCompatActivity{
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edtEmail.getText().equals("")) {
+                if (edtEmail.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Email khong duoc de trong", Toast.LENGTH_SHORT).show();
                     isAdd[0] = false;
+                } else {
+                    isAdd[0] = true;
                 }
-                if (edtName.getText().equals("")) {
+                if (edtName.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Name khong duoc de trong", Toast.LENGTH_SHORT).show();
                     isAdd[0] = false;
+                } else {
+                    isAdd[0] = true;
                 }
 
-                if (edtID.getText().equals("")) {
+                if (edtID.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "ID khong duoc de trong", Toast.LENGTH_SHORT).show();
                     isAdd[0] = false;
+                } else {
+                    isAdd[0] = true;
                 }
-                if (edtSex.getText().equals("")) {
+                if (edtSex.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Sex khong duoc de trong", Toast.LENGTH_SHORT).show();
                     isAdd[0] = false;
+                } else {
+                    isAdd[0] = true;
                 }
                 if (isAdd[0]) {
                     DatabaseHelper.getInstance(getApplicationContext())
@@ -62,6 +70,8 @@ public class AddStutentActivity extends AppCompatActivity{
                                     edtName.getText().toString(),
                                     edtEmail.getText().toString(),
                                     edtSex.getText().toString()));
+
+                    Toast.makeText(getApplicationContext(), edtEmail.getText().toString(), Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                     finish();
                 }
